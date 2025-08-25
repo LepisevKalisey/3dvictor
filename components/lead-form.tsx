@@ -13,8 +13,8 @@ const formSchema = z.object({
   name: z.string().min(2, 'Имя должно содержать минимум 2 символа'),
   phone: z.string().min(10, 'Введите корректный номер телефона'),
   message: z.string().optional(),
-  policy: z.literal(true, {
-    errorMap: () => ({ message: 'Необходимо согласие с политикой конфиденциальности' }),
+  policy: z.boolean().refine(val => val === true, {
+    message: 'Необходимо согласие с политикой конфиденциальности',
   }),
 })
 
