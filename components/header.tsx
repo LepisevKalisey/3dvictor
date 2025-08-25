@@ -25,10 +25,10 @@ export default function Header() {
         
         <div className="flex items-center gap-4">
           <Button asChild variant="outline" size="sm" className="hidden sm:flex">
-            <a href="tel:+77000000000">+7 700 000 00 00</a>
+            <a href="tel:+77785612123">+7 778 561 21 23</a>
           </Button>
           <Button asChild size="sm">
-            <a href="https://wa.me/77000000000?text=Здравствуйте!%20Нужна%203D-печать%20в%20Алматы.%20Задача:%20{кратко}.%20Размер:%20{примерно}.%20Материал:%20{если%20знаете}.%20Нужны%20фикс-смета%20и%20срок." target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/77785612123?text=Здравствуйте!%20Нужна%203D-печать%20в%20Алматы.%20Задача:%20{кратко}.%20Размер:%20{примерно}.%20Материал:%20{если%20знаете}.%20Нужны%20фикс-смета%20и%20срок." target="_blank" rel="noopener noreferrer">
               Написать в WhatsApp
             </a>
           </Button>
