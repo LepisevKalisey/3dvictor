@@ -1,54 +1,62 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
+'use client'
+
+import { useState } from 'react'
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './ui/accordion'
+
+const faqItems = [
+  {
+    question: 'Какие материалы вы используете для 3D-печати?',
+    answer: 'Мы используем качественные PLA, PETG, ABS, TPU и другие материалы от проверенных производителей. Выбор материала зависит от требований к изделию: прочность, гибкость, термостойкость и т.д.'
+  },
+  {
+    question: 'Сколько времени занимает 3D-печать?',
+    answer: 'Время печати зависит от размера, сложности и детализации модели. Небольшие простые модели могут быть готовы за несколько часов, сложные крупные изделия могут печататься до нескольких дней.'
+  },
+  {
+    question: 'Нужна ли мне своя 3D-модель или вы можете создать её?',
+    answer: 'Вы можете предоставить готовую 3D-модель или мы можем создать её для вас по вашим эскизам, фотографиям или описанию за дополнительную плату.'
+  },
+  {
+    question: 'Какого максимального размера деталь вы можете напечатать?',
+    answer: 'Максимальный размер печати на наших принтерах составляет 300x300x400 мм. Более крупные изделия мы можем напечатать по частям с последующей сборкой.'
+  },
+  {
+    question: 'Как оплатить заказ?',
+    answer: 'Мы принимаем оплату наличными при получении, банковским переводом или через популярные платежные системы. Для крупных заказов может потребоваться предоплата.'
+  }
+]
 
 export default function FaqSection() {
+  const [openItems, setOpenItems] = useState<Record<number, boolean>>({})
+
+  const toggleItem = (index: number) => {
+    setOpenItems(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }))
+  }
+
   return (
-    <section id="faq" className="py-16 bg-card/50">
-      <div className="container">
-        <h2 className="text-center mb-12">Часто задаваемые вопросы</h2>
+    <section className="py-16 bg-background">
+      <div className="container max-w-3xl">
+        <h2 className="text-3xl font-bold text-center mb-8">Часто задаваемые вопросы</h2>
         
-        <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger>Нет 3D-файла?</AccordionTrigger>
-              <AccordionContent>
-                Опишите идею и габариты, подскажем быстрый путь. Простые правки — часто бесплатно при печати у нас.
+        <Accordion className="space-y-4">
+          {faqItems.map((item, index) => (
+            <AccordionItem key={index} className="border rounded-lg p-2 bg-card">
+              <AccordionTrigger 
+                className="text-left font-semibold px-4"
+                onClick={() => toggleItem(index)}
+                open={openItems[index]}
+              >
+                {item.question}
+              </AccordionTrigger>
+              <AccordionContent open={openItems[index]}>
+                <div className="px-4 text-text/80">{item.answer}</div>
               </AccordionContent>
             </AccordionItem>
-            
-            <AccordionItem value="item-2">
-              <AccordionTrigger>Как быстро печатаете?</AccordionTrigger>
-              <AccordionContent>
-                Многие заказы — за 24 ч при свободных слотах. Срок подтверждаем до старта.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="item-3">
-              <AccordionTrigger>Какие материалы?</AccordionTrigger>
-              <AccordionContent>
-                PLA/PETG/ABS для функционала, Resin — для высокой детализации. Посоветуем по задаче.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="item-4">
-              <AccordionTrigger>Оплата?</AccordionTrigger>
-              <AccordionContent>
-                Kaspi/карта для физлиц, счёт для юрлиц. Сумму подтверждаем заранее.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="item-5">
-              <AccordionTrigger>Конфиденциальность?</AccordionTrigger>
-              <AccordionContent>
-                Да. NDA по умолчанию; ничего не публикуем без вашего согласия.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
+          ))}
+        </Accordion>
       </div>
     </section>
   )
