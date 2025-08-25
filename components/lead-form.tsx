@@ -80,8 +80,8 @@ export default function LeadForm() {
             <Input
               id="name"
               placeholder="Введите ваше имя"
-              {...register('name')}
               error={errors.name?.message}
+              {...register('name')}
             />
           </div>
           
@@ -92,8 +92,8 @@ export default function LeadForm() {
             <Input
               id="phone"
               placeholder="+7 (___) ___-__-__"
-              {...register('phone')}
               error={errors.phone?.message}
+              {...register('phone')}
             />
           </div>
           
@@ -104,8 +104,8 @@ export default function LeadForm() {
             <Textarea
               id="message"
               placeholder="Опишите ваш проект или задайте вопрос"
-              {...register('message')}
               error={errors.message?.message}
+              {...register('message')}
             />
           </div>
           
