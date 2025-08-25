@@ -37,6 +37,26 @@ npm run build
 npm run start
 ```
 
+## Деплой на Vercel
+
+Этот проект оптимизирован для деплоя на Vercel. Для деплоя:
+
+1. Создайте аккаунт на [Vercel](https://vercel.com)
+2. Установите Vercel CLI:
+```bash
+npm i -g vercel
+```
+3. Войдите в аккаунт:
+```bash
+vercel login
+```
+4. Деплой проекта:
+```bash
+vercel
+```
+
+Или просто подключите репозиторий GitHub к Vercel для автоматического деплоя.
+
 ## Структура проекта
 
 - `/app` - Страницы приложения (Next.js App Router)

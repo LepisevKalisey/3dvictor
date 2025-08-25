@@ -10,6 +10,8 @@ const formSchema = z.object({
   }),
 })
 
+export const runtime = 'edge'; // Добавляем поддержку Edge Runtime для лучшей производительности на Vercel
+
 export async function POST(request: NextRequest) {
   try {
     // Получаем данные из запроса
@@ -30,8 +32,8 @@ export async function POST(request: NextRequest) {
     // В реальном проекте здесь будет отправка данных в Telegram и по email
     console.log('Получена новая заявка:', { name, phone, message })
     
-    // Имитация задержки сервера
-    await new Promise(resolve => setTimeout(resolve, 500))
+    // Имитация задержки сервера (уменьшаем для Vercel)
+    await new Promise(resolve => setTimeout(resolve, 100))
     
     return NextResponse.json({ success: true })
   } catch (error) {
