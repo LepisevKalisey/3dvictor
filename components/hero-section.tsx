@@ -5,7 +5,8 @@ import { Badge } from './ui/badge'
 export default function HeroSection() {
   return (
     <section className="relative py-24 md:py-32 lg:py-40 overflow-hidden">
-      <div className="absolute inset-0 z-0 opacity-30">
+      {/* Фоновое изображение */}
+      <div className="absolute inset-0 z-0">
         <Image 
           src="/hero.webp" 
           alt="3D печать в Алматы" 
@@ -15,14 +16,17 @@ export default function HeroSection() {
         />
       </div>
       
-      <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
+      {/* Темный оверлей для лучшего контраста */}
+      <div className="absolute inset-0 z-10 bg-black opacity-60"></div>
+      
+      <div className="container relative z-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span className="block text-foreground">3D-печать в Алматы</span>
+            <span className="block text-white">3D-печать в Алматы</span>
             <span className="block text-primary mt-2">от идеи до детали уже завтра</span>
           </h1>
           
-          <p className="text-lg sm:text-xl md:text-2xl mb-8 text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl mb-8 text-white max-w-2xl mx-auto leading-relaxed">
             Фиксируем цену до старта. Инженерная проверка, SLA по срокам, доставка по городу.
           </p>
           
@@ -68,7 +72,7 @@ export default function HeroSection() {
             </Badge>
           </div>
           
-          <p className="text-base text-muted-foreground font-medium">
+          <p className="text-base text-white font-medium">
             Мы ответим в WhatsApp и зафиксируем цену и срок
           </p>
         </div>
